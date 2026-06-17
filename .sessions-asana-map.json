@@ -1,0 +1,46 @@
+{
+  "_README": "Maps SESSIONS.md threads to Asana so re-syncing updates cards instead of duplicating them. 'threads' maps a stable Thread id to its Asana task GID (starts empty in each repo; fill as sessions log threads). 'boards' is the workspace-wide registry of Initiative -> board GID and its five section GIDs; it is the same in every repo. See SESSIONS-SYNC.md for the procedure.",
+  "workspace_gid": "1215812427781402",
+  "team_gid": "1215812427781404",
+  "acting_account": { "name": "Claudsulis", "gid": "1215812427781390", "email": "wmasulis.ai@gmail.com" },
+  "assignee_account": { "name": "Whitney", "gid": "1203109343585238", "email": "whitney@whitneymasulis.com" },
+  "boards": {
+    "Health tracking": {
+      "project": "1215809611188387",
+      "sections": { "Up next": "1215809611814621", "Claude Code is doing": "1215809767888153", "Waiting on you": "1215809736655020", "Blocked": "1215809736695314", "Done": "1215809736692728" }
+    },
+    "Podcast and research library": {
+      "_note": "personal: health and comedy",
+      "project": "1215809736651592",
+      "sections": { "Up next": "1215809767847430", "Claude Code is doing": "1215809736737251", "Waiting on you": "1215809736772519", "Blocked": "1215809798150950", "Done": "1215809798381000" }
+    },
+    "Portfolio": {
+      "project": "1215809798480708",
+      "sections": { "Up next": "1215809611782448", "Claude Code is doing": "1215809798440609", "Waiting on you": "1215809736775383", "Blocked": "1215809611911068", "Done": "1215809798467890" }
+    },
+    "Mimi Care App": {
+      "_note": "personal: caring for aging parents (mimi-care repo); separate from CareStar (work)",
+      "project": "1215810832211186",
+      "sections": { "Up next": "1215810800263294", "Claude Code is doing": "1215810770450968", "Waiting on you": "1215810800191191", "Blocked": "1215810853583373", "Done": "1215810770899442" }
+    },
+    "CareStar": {
+      "_note": "work caregiving project, separate from the personal mimi app",
+      "project": "1215810798416379",
+      "sections": { "Up next": "1215810661842543", "Claude Code is doing": "1215810851799483", "Waiting on you": "1215810446453876", "Blocked": "1215810830922125", "Done": "1215810661826357" }
+    },
+    "Tooling and setup": {
+      "project": "1215809767905055",
+      "sections": { "Up next": "1215809762577298", "Claude Code is doing": "1215809736692664", "Waiting on you": "1215810132556647", "Blocked": "1215809767849393", "Done": "1215809736821855" }
+    },
+    "Harmonic AI": {
+      "_note": "work umbrella: tracker, AI diary, AI use cases library, how-I-AI podcast research",
+      "project": "1215810444707306",
+      "sections": { "Up next": "1215810313588524", "Claude Code is doing": "1215810520619354", "Waiting on you": "1215810444709833", "Blocked": "1215810517254430", "Done": "1215810444674039" }
+    },
+    "To be filed": {
+      "project": "1215808664957295",
+      "sections": { "Unscoped ideas": "1215808665389387" }
+    }
+  },
+  "threads": {}
+}
