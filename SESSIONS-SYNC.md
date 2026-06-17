@@ -26,15 +26,17 @@ they do not decide the board.
 
 ## Status to section, and who gets assigned
 
-| SESSIONS.md status | Board section          | Assignee                |
-|--------------------|------------------------|-------------------------|
-| RUNNING            | Claude Code is doing   | unassigned              |
-| WAITING ON YOU     | Waiting on you         | Whitney (assignee gid)  |
-| BLOCKED            | Blocked                | unassigned              |
-| DONE               | Done (mark completed)  | unassigned              |
+| SESSIONS.md status | Board section          | Assignee                       |
+|--------------------|------------------------|--------------------------------|
+| RUNNING            | Claude Code is doing   | Claudsulis (acting_account.gid)|
+| WAITING ON YOU     | Waiting on you         | Whitney (assignee_account.gid) |
+| BLOCKED            | Blocked                | Claudsulis (acting_account.gid)|
+| DONE               | Done (mark completed)  | unassigned                     |
 
-Only "Waiting on you" cards get assigned to her, so My Tasks stays an accurate
-list of what she actually owes.
+The rule: Claude Code's own work (running, queued in Up next, or blocked) is
+assigned to the Claudsulis acting account, and only "Waiting on you" cards are
+assigned to Whitney. That way her My Tasks stays an accurate list of what she
+actually owes, and the Claudsulis tasks show what Claude Code owns.
 
 ## The card body (html_notes), keep it short
 
@@ -59,7 +61,8 @@ For each block in `SESSIONS.md`:
    - If it is there, call `update_tasks` on that task GID: set the name, set
      `html_notes` to the card body, move it with `add_projects`
      `[{project_id, section_id}]`, set `completed` true for DONE, and set
-     `assignee` to Whitney's gid for WAITING ON YOU (or `null` otherwise).
+     `assignee` per the table: Whitney's gid for WAITING ON YOU, the Claudsulis
+     acting_account.gid for RUNNING and BLOCKED (and queued Up next), `null` for DONE.
    - If it is not there, call `create_tasks` on the board and section, then write
      the returned task GID back into `threads` in `.sessions-asana-map.json` so
      the next sync updates instead of duplicating.
