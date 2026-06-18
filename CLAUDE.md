@@ -66,37 +66,14 @@ Deploys to `<<FILL IN: preview URL>>`. Commit after deploy succeeds. Always post
 
 ---
 
-## Keep SESSIONS.md current (live session board)
 
-At the END OF EVERY TURN, update this session's block in `SESSIONS.md` at the repo
-root:
+## Session board
 
-- Set the STATUS TAG: RUNNING, WAITING ON WHITNEY, BLOCKED, or DONE.
-- Keep "Thread id" stable; never change it once set. Use it to find the block to
-  update so you never create a duplicate.
-- Set "Initiative" to the theme this thread belongs to, not the repo name. If you
-  are unsure which initiative, set it to "To be filed". The current themes are:
-  Health tracking (the health app and the medication tracker), Portfolio,
-  Mimi Care App (personal caregiving), CareStar (work caregiving), Tooling and
-  setup, Harmonic AI (work; the tracker, AI diary, AI use cases library, how-I-AI
-  podcast research), and Podcast and research library (personal, health and
-  comedy). Otter transcripts is its own thing, not one of the podcast libraries.
-- Update "Claude Code just did" to the last thing you did, in one line.
-- Update ">> YOUR NEXT MOVE" to the single next thing she has to do herself.
-  - If it needs the terminal, write the EXACT command in an indented block, with
-    one plain-language line above it. Assume she has barely used the terminal.
-    No jargon. No em dashes.
-  - If there is nothing for her to do, write "nothing, still running" or
-    "nothing, done".
-- Keep "Open issues" to genuine blockers or decisions only.
-- Stamp "Updated" with the date and time.
-- If this thread has no block yet, create one by copying the format of an
-  existing block.
-- Keep every block to a few lines. Full detail still goes in `session-handoffs/`.
+This repo is part of Whitney's cross-repo session board. The rules for it — keep
+`SESSIONS.md` current and upsert each block to Asana **every turn** (status tags,
+initiative routing, and the manual "sync to Asana" backstop) — live in ONE place:
+the global `~/.claude/CLAUDE.md`, section "Cross-repo session board". Do not
+duplicate them here.
 
-### Syncing the board to Asana
-
-When she says "sync to Asana" (or at the start of a day, or before a meeting),
-follow the procedure in `SESSIONS-SYNC.md`. It reads each block here, routes it to
-its Initiative board, and creates or updates the matching card without making
-duplicates. The board and card mapping lives in `.sessions-asana-map.json`.
+Repo-specific files: `SESSIONS.md` (the board), `SESSIONS-SYNC.md` (the Asana
+procedure), and `.sessions-asana-map.json` (the board/card mapping).
