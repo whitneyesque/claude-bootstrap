@@ -1,14 +1,14 @@
 ---
 name: session-handoff
-description: At the end of a working session, write a timestamped handoff document (what happened, what was done, what was learned, what did not work, what is left, how long it took, who was consulted, what tools were used) and append a matching entry to your AI diary. Works with Claude Code and other agent tools such as Antigravity. Generic and shareable; edit the one-time setup block before first use.
+description: At the end of a working session, write a timestamped handoff document for the next session, and append a detailed entry to your AI diary that captures the whole session including how long it took. Works with Claude Code and other agent tools such as Antigravity. Generic and shareable; edit the one-time setup block before first use.
 ---
 
 # Session handoff and AI diary
 
 This skill does two things at the end of a working session:
 
-1. Writes a **timestamped handoff file** a fresh session can read to pick up where this one left off.
-2. Appends a short **entry to your AI diary** (a running log of your AI work and learnings).
+1. Writes a **timestamped handoff file** a fresh session can read to pick up where this one left off. The handoff is a practical pickup sheet; it does not need timing.
+2. Appends a **detailed entry to your AI diary**, your durable record of the work. The diary entry is as detailed as the handoff or more, and it is the place where **how long things took** is recorded.
 
 It is written to be shared. Before the first run, fill in the one-time setup block below. After that, just invoke it at the end of a session.
 
@@ -23,7 +23,7 @@ It is written to be shared. Before the first run, fill in the one-time setup blo
     or `~/Google Drive/<folder path>/Your Name's AI Diary.md`.
   - If you do not have a diary file yet, create an empty one at that path with a title line, or tell the skill to create it on first run.
 
-When the skill runs, it reads these two values from this block. If either still says `FILL IN`, do the handoff file anyway and print the diary entry in the chat for the person to paste, telling them to set the path.
+When the skill runs, it reads these two values from this block. If either still says `FILL IN`, write the handoff file anyway and print the diary entry in the chat for the person to paste, telling them to set the path.
 
 ---
 
@@ -42,18 +42,18 @@ Create the `session-handoffs/` folder if it does not exist.
 
 ## Step 3: Gather the state (so the next session is not guessing)
 
-If this is a git repo, capture the live state and use it in the handoff. Run and read:
+If this is a git repo, capture the live state and use it in both the handoff and the diary. Run and read:
 - `git branch --show-current`
 - `git status --short`  (uncommitted and untracked files)
 - `git log --oneline -5`
 - `git diff --name-status main...HEAD` (files changed vs the main branch, if there is one)
 - open pull requests, if the tool has a CLI for it (for example `gh pr list` for GitHub)
 
-If any command fails, note that in the handoff rather than leaving a blank. If it is not a git repo, just describe what files or systems changed.
+If any command fails, note that rather than leaving a blank. If it is not a git repo, just describe what files or systems changed.
 
-## Step 3b: Measure how long it took, from the tool's log (never from memory)
+## Step 3b: Measure how long it took (this goes in the DIARY, not the handoff)
 
-You cannot feel elapsed time, so do not estimate it. Read real timestamps from the agent tool's own session log. Report a **total span** and an **approximate per-task breakdown** (one line per request or chapter), and tag the whole thing "approx" because wall-clock time includes thinking and time away.
+You cannot feel elapsed time, so do not estimate it. Read real timestamps from the agent tool's own session log. Produce a **total span** and an **approximate per-task breakdown** (one line per request or chapter), tagged "approx" because wall-clock time includes thinking and time away. This result is used in the diary entry in Step 6; the handoff does not include it.
 
 **If you are running in Claude Code:** the session is logged to a JSONL transcript where every event has an ISO-8601 `timestamp`. This finds the active transcript and prints the total span plus a per-user-turn breakdown:
 
@@ -93,9 +93,9 @@ PY
 
 **If you are running in Antigravity (or another agent tool):** it keeps its own session or event log with timestamps too, just in a different place and format. Find that tool's session log for the current session, read the first and last event timestamps for the total span, and use the per-step or per-message timestamps for the approximate breakdown. The same rule holds: read real timestamps, do not invent them.
 
-**If you cannot read any log:** write "timing unavailable" in the handoff. Never backfill with a guess. Field names also shift between tool versions; if the per-task breakdown looks empty or wrong, report only the reliable total span.
+**If you cannot read any log:** write "timing unavailable" in the diary. Never backfill with a guess. Field names also shift between tool versions; if the per-task breakdown looks empty or wrong, record only the reliable total span.
 
-## Step 4: Write the content
+## Step 4: Write the handoff content (no timing here)
 
 Use this structure. Be specific: real file paths, branch names, commit ids, links, names. A skim-only reader should be able to reconstruct the session from the headings.
 
@@ -105,14 +105,11 @@ Use this structure. Be specific: real file paths, branch names, commit ids, link
 ## What this session was about
 One or two sentences on the goal or theme.
 
-## How long it took (approx, from the session log)
-Total span, then a per-task breakdown (one line per request or chapter) from Step 3b. Tag it "approx". If the log could not be read, write "timing unavailable".
-
 ## What was done
 Concrete things accomplished. For each: what changed, why, and where it lives now (path, branch, link).
 
 ## What was learned
-Durable, transferable learnings, not just a task list. The things future-you would want to know.
+Durable, transferable learnings, not just a task list.
 
 ## What did not work (dead ends)
 Things tried that failed. One line each: what was tried, why it failed, what would have to change to make it worth trying again. If there were none, say so.
@@ -124,7 +121,7 @@ A numbered list of unfinished items. For each: what it is, what is blocking it, 
 People and approvals this work depended on: a decision asked of the user, an admin or teammate, an external support contact, a review still owed. Note what is still waiting on someone.
 
 ## What other tools were used
-Tools and services beyond the agent itself: connectors or MCP tools, CLIs, APIs, external apps, dashboards. Note anything that needed setup, a key, or a login, so the next session is not surprised.
+Tools and services beyond the agent itself: connectors or MCP tools, CLIs, APIs, external apps, dashboards. Note anything that needed setup, a key, or a login.
 
 ## How to pick this up
 A short paragraph: what a fresh session should read or open first to get oriented.
@@ -134,17 +131,22 @@ A short paragraph: what a fresh session should read or open first to get oriente
 
 After writing, glance at the project root for older undated handoff files (for example `HANDOFF.md`, `NEXT-SESSION.md`). If one is clearly superseded by this dated handoff, offer to remove it. If unsure, leave it and mention it. The dated files in `session-handoffs/` are the canonical record.
 
-## Step 6: Append the entry to the AI diary
+## Step 6: Append a detailed entry to the AI diary
 
-In addition to the handoff file, append a short entry to the AI diary file from the setup block.
+The diary entry is the full record. Make it **as detailed as the handoff or more**, and it is the place that records **how long it took** (from Step 3b).
 
 1. Read the **YOUR AI DIARY FILE** path. If it still says `FILL IN` or the file cannot be reached (no Drive mount, different machine, sandboxed), do not skip: print the diary entry in the chat and tell the person to paste it in, noting the path was not reachable.
 2. If the file exists, **append the new entry at the TOP** (newest first), just below any title or intro and above the previous entry. Do not create a second file.
-3. Date the entry, title it with **YOUR NAME** and a short topic, and use this shape:
+3. Date the entry, title it with **YOUR NAME** and a short topic, and cover all of this (carry over the full detail from the handoff, do not shorten it):
    - **What this session was.**
-   - **What got done.**
-   - **Learnings worth keeping.** (favor the transferable insight)
-   - **Where things stand.**
+   - **How long it took.** The total span plus the approximate per-task breakdown from Step 3b, tagged "approx". If the log could not be read, write "timing unavailable".
+   - **What got done.** The concrete work, with the same specifics as the handoff (files, branches, links).
+   - **What was learned.** Favor the transferable insight; this is the part future-you and other readers get the most from.
+   - **What did not work.** The dead ends and why.
+   - **What is left.** The open items and their next steps.
+   - **Who we had to go to.** People, approvals, reviews.
+   - **What tools were used.** Connectors, CLIs, APIs, logins.
+   - **Where things stand.** A one or two line closer.
 4. Keep it readable on its own; it may be read by a person or ingested into a tool like NotebookLM later. Plain punctuation travels best.
 
 To insert at the top without rewriting the whole file by hand, read it, place the new entry before the first existing entry heading, and write it back. For example:
@@ -170,3 +172,4 @@ Print: the handoff file path, a one-line summary of what is in it, anything remo
 - Drop the `session-handoff/` folder into your agent's skills directory (for Claude Code that is `~/.claude/skills/` or a project's `.claude/skills/`), then invoke it by name at the end of a session.
 - Edit the one-time setup block first. Everything else is generic.
 - If your agent already has a skill named `session-handoff`, rename this folder to avoid a clash.
+- The split to remember: the handoff is the next session's pickup sheet (no timing); the diary is the detailed, lasting record (with timing).
