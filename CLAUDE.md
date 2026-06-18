@@ -71,7 +71,7 @@ Deploys to `<<FILL IN: preview URL>>`. Commit after deploy succeeds. Always post
 At the END OF EVERY TURN, update this session's block in `SESSIONS.md` at the repo
 root:
 
-- Set the STATUS TAG: RUNNING, WAITING ON YOU, BLOCKED, or DONE.
+- Set the STATUS TAG: RUNNING, WAITING ON WHITNEY, BLOCKED, or DONE.
 - Keep "Thread id" stable; never change it once set. Use it to find the block to
   update so you never create a duplicate.
 - Set "Initiative" to the theme this thread belongs to, not the repo name. If you

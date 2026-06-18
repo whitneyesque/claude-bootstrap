@@ -4,7 +4,7 @@ Live status of every Claude Code session in this repo. Each session updates its
 own block at the end of each turn. This is the quick board, not the deep record.
 Full end-of-session detail still goes in session-handoffs/ as usual.
 
-STATUS TAGS:   RUNNING   ·   WAITING ON YOU   ·   BLOCKED   ·   DONE
+STATUS TAGS:   RUNNING   ·   WAITING ON WHITNEY   ·   BLOCKED   ·   DONE
 
 To push these blocks to Asana, see SESSIONS-SYNC.md. The thread-id to card
 mapping is in .sessions-asana-map.json, so re-syncing updates cards instead of
@@ -18,7 +18,7 @@ then syncs. If the thread already has an Asana card, set its Thread id in
 .sessions-asana-map.json to that card's GID so the sync updates it instead of
 making a duplicate.
 
-## <thread name> — WAITING ON YOU
+## <thread name> — WAITING ON WHITNEY
 Thread id: <stable-slug-that-never-changes>
 Initiative: <the theme this belongs to>
 Branch / worktree: <branch, or main>

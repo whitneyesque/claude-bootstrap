@@ -5,7 +5,7 @@ Asana", at the start of a day, or before a meeting. It is on demand only; there 
 no background job. It doubles as the park point before she steps away.
 
 The goal: every live thread shows up as one card on its Initiative board, and her
-"Waiting on you" cards land in her My Tasks. Re-running this updates cards in
+"Waiting on Whitney" cards land in her My Tasks. Re-running this updates cards in
 place. It never creates duplicates.
 
 ## What you need
@@ -15,7 +15,7 @@ place. It never creates duplicates.
 - `.sessions-asana-map.json` in the repo root. It holds:
   - `boards`: each Initiative name to its board GID and five section GIDs.
   - `threads`: each stable Thread id to its Asana task GID.
-  - `assignee_account.gid`: Whitney's real account, for "Waiting on you" cards.
+  - `assignee_account.gid`: Whitney's real account, for "Waiting on Whitney" cards.
 
 ## The routing rule
 
@@ -29,12 +29,12 @@ they do not decide the board.
 | SESSIONS.md status | Board section          | Assignee                       |
 |--------------------|------------------------|--------------------------------|
 | RUNNING            | Claude Code is doing   | Claudsulis (acting_account.gid)|
-| WAITING ON YOU     | Waiting on you         | Whitney (assignee_account.gid) |
+| WAITING ON WHITNEY     | Waiting on Whitney         | Whitney (assignee_account.gid) |
 | BLOCKED            | Blocked                | Claudsulis (acting_account.gid)|
 | DONE               | Done (mark completed)  | unassigned                     |
 
 The rule: Claude Code's own work (running, queued in Up next, or blocked) is
-assigned to the Claudsulis acting account, and only "Waiting on you" cards are
+assigned to the Claudsulis acting account, and only "Waiting on Whitney" cards are
 assigned to Whitney. That way her My Tasks stays an accurate list of what she
 actually owes, and the Claudsulis tasks show what Claude Code owns.
 
@@ -61,7 +61,7 @@ For each block in `SESSIONS.md`:
    - If it is there, call `update_tasks` on that task GID: set the name, set
      `html_notes` to the card body, move it with `add_projects`
      `[{project_id, section_id}]`, set `completed` true for DONE, and set
-     `assignee` per the table: Whitney's gid for WAITING ON YOU, the Claudsulis
+     `assignee` per the table: Whitney's gid for WAITING ON WHITNEY, the Claudsulis
      acting_account.gid for RUNNING and BLOCKED (and queued Up next), `null` for DONE.
    - If it is not there, call `create_tasks` on the board and section, then write
      the returned task GID back into `threads` in `.sessions-asana-map.json` so
