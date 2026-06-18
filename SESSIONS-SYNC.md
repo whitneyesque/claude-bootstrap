@@ -50,6 +50,15 @@ Open issues: <real blockers or decisions only, or none>
 Updated: <date and time>
 ```
 
+## Bundles and subtasks
+
+If a thread is really several related items, make it ONE parent card and add each
+item as a subtask (set the `parent` field to the card's GID on `create_tasks`),
+rather than one long body or many separate cards. The board face stays a clean
+list of threads; the detail lives in subtasks. Keep assignment on the parent
+(Claudsulis for Claude work, Whitney for Waiting on Whitney) and leave subtasks
+unassigned, so My Tasks does not fill up with subtasks.
+
 ## The steps (idempotent)
 
 For each block in `SESSIONS.md`:
