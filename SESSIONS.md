@@ -12,25 +12,36 @@ duplicating them.
 
 ------------------------------------------------------------
 
-No active sessions logged yet. When a session starts a thread, it adds a block
-here by copying the format below, gives it a stable Thread id and an Initiative,
-then syncs. If the thread already has an Asana card, set its Thread id in
-.sessions-asana-map.json to that card's GID so the sync updates it instead of
-making a duplicate.
+## Session tracker and bootstrap skill build — DONE
+Thread id: session-tracker-build
+Initiative: Tooling and setup
+Branch / worktree: main (spans claude-bootstrap and Agent-Land/claude-setup)
 
-## <thread name> — WAITING ON WHITNEY
-Thread id: <stable-slug-that-never-changes>
-Initiative: <the theme this belongs to>
-Branch / worktree: <branch, or main>
+Claude Code just did: built the 8 theme boards, put SESSIONS.md and the sync into
+7 repos, swept the full backlog into Asana, set the Claudsulis assignment rule, and
+wrote the generic shareable session-handoff-plus-diary skill.
 
-Claude Code just did: <one line>
+>> YOUR NEXT MOVE: nothing, done. Loose ends are tracked in the rollout thread below.
 
->> YOUR NEXT MOVE: <the single thing she has to do, plain words>
+Open issues: none.
+Updated: 2026-06-18
 
-    # <one plain-language line: what this does and why>
-    <exact command to copy and paste, or omit this block if no command>
+------------------------------------------------------------
 
-Open issues: <real blockers or decisions only, or "none">
-Updated: <date and time>
+## Finish session-tracker rollout — WAITING ON WHITNEY
+Thread id: session-tracker-rollout
+Initiative: Tooling and setup
+Branch / worktree: main
+
+Claude Code just did: updated your live /session-handoff command and pushed it; this
+machine is live via the symlink.
+
+>> YOUR NEXT MOVE: pull the update on your other Mac, then decide which kit is canonical.
+
+    # Pulls the updated /session-handoff onto your other Mac.
+    git -C ~/dev/Agent-Land pull
+
+Open issues: claude-setup (live) and claude-bootstrap (newer) have not been merged.
+Updated: 2026-06-18
 
 ------------------------------------------------------------
