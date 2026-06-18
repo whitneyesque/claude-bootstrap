@@ -45,3 +45,19 @@ Open issues: claude-setup (live) and claude-bootstrap (newer) have not been merg
 Updated: 2026-06-18
 
 ------------------------------------------------------------
+
+## Shareable session-handoff + AI diary skill — DONE
+Thread id: session-handoff-skill
+Initiative: Tooling and setup
+Branch / worktree: main
+
+Claude Code just did: wrote the generic, shareable skill at skills/session-handoff/SKILL.md
+(timestamped handoff plus a detailed AI diary entry with timing; one-time setup block;
+works for Claude Code and Antigravity) and sent the file to Whitney to forward.
+
+>> YOUR NEXT MOVE: nothing, done. Forward it to anyone who wants it.
+
+Open issues: none.
+Updated: 2026-06-18
+
+------------------------------------------------------------
